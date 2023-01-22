@@ -1,0 +1,129 @@
+#include <iostream>
+#include<string>
+using namespace std;
+class Data
+{
+    private:
+    string name, type;
+    double ac_no=0, Balance=0;
+    public:
+    int data()
+    {
+        cout<<"Enter your name"<<endl;
+        cin>> name;
+        cout<<"Enter your account no. "<< endl;
+        cin>>ac_no;
+        cout<<"Enter your account type. "<<endl;
+        cin>>type;
+        return 1;
+    }
+    int deposit()
+    {
+        string name;
+        double no;
+        cout<<"Do you want to deposit amount"<<endl;
+        cout<<"Enter your account no & type"<<endl;
+        cin>>no>>name;
+        cout<<"How much amount do you want to deposit";
+        cin>>Balance;
+        return 1;
+    }
+    int withdrawl()
+    {
+        int amt;
+        a:
+        cout<<"Do you want to withdrawl your amount? Pls enter your amount above 1000rs "<<endl;
+        cin>>amt;
+        if(amt<1000)
+        {
+            cout<<"amount is less than 1000"<<endl;
+            goto a;
+        }
+        else
+        {
+            Balance -= amt;
+            cout<<"Your Current Balance is "<<Balance;
+        }
+        return 1;
+    }
+    void Display()
+    {
+        cout<<"Your name is "<<name<<endl;
+        cout<<"Your ac no is "<<ac_no<<endl;
+        cout<<"Your ac type is "<<type<<endl;
+        cout<<"Your current balance is "<<Balance<<endl;
+    }
+    int View(int);
+};
+int Data::View(int num)
+{
+    if (ac_no == num) {
+        Display();
+        return (1);
+    }
+    return (0);
+}
+int main()
+{
+    Data Members[10];
+    int num, i,ch,n, f;
+    cout<<"How many account you want to create: ";
+    cin>>n;
+    cout<<" First create your account "<<endl;
+    for(i=0;i<n;i++)
+    { 
+        Members[i].data();
+        cout<<endl;
+    }
+    for(i=0;i<n;i++)
+    {
+         cout<<" Press 1 To Display Your Account information "<<endl<<" Press 2 to Deposit Amount "<<endl<<" Press 3 to Withdraw amount"<<" Press 4 or any key to exit "<< endl;
+    cin>>ch;
+    switch (ch)
+    {
+        case 1 :
+        {
+            cout <<" Pls Enter your account number to Display "<<endl;
+            cin>>num;
+            for (i = 0; i < n; i++) {
+                    f = Members[i].View(num);
+                    if (f)
+                        break;
+                }
+                if (!f)
+                    cout << "No Record Found" << endl;
+                break;
+        }
+        case 2: 
+        {
+            cout<<"Enter Your account number to Deposit "<<endl;
+            cin>>num;
+            for(i=0;i<n;i++)
+            {
+                f = Members[i].View(num);
+                if(f){
+                     Members[i].deposit();
+                     break;
+                }
+            }  
+                if (!f)
+                cout<<"No Record Found"<<endl;
+        }
+        case 3:
+        {
+            cout<<"Enter your account number to Withdrawl "<<endl;
+            cin>>num;
+            for(i=0;i<n;i++)
+            {
+                 f = Members[i].View(num);
+            if(f)
+                Members[i].withdrawl();
+                break;
+            }
+           if (!f)
+            cout<<"No Record Found "<<endl;
+        }
+        default:cout<<"Thank you for Banking with us "<<endl;
+    }
+    }
+}
