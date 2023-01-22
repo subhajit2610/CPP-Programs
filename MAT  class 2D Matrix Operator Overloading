@@ -24,6 +24,13 @@ class MAT{
     MAT operator+(MAT B);    // Addition Of two Matrix 
     MAT operator-(MAT B);     // Difference of two matrix
     MAT operator*(MAT B);     // Multiplication of two matrix
+
+    void free(){
+        for(int i=0; i<row; i++){
+            delete [] mat[i];
+        }
+        delete [] mat;
+    }
 };
 MAT MAT:: operator+(MAT B){
         MAT sum;
@@ -83,5 +90,8 @@ int main(){
     A+B; 
     A-B;
     A*B;
+    A.free();
+    B.free();
+    C.free();    
     return 0;
 }
