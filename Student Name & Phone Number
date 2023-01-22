@@ -1,0 +1,41 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class list{
+    public:
+    string ph_no,name,Name;
+    int res;
+     int getdata(string x, string a){
+        name=x;
+        ph_no=a;
+        return 0;
+     }
+     
+     void display(string m,list ob[]){
+        for(int i=1; i<=15;i++){
+            res = m.compare(ob[i].name);
+                if(res==0){
+                      cout<<ob[i].name<<"'s Phone Number is "<<ob[i].ph_no<<endl;
+                      break;
+                } 
+            }
+            if(res!=0)
+            cout<<"\nEntered Wrong Name to Search or Student Details not exist"<<endl;
+     }
+};
+int main(){
+    list ob[15];
+    string Name, Search, Ph_no;
+    cout<<"\nEnter Number of 15 Students \n---------------------------- "<<endl;
+    for(int i=1;i<=15;i++){
+        cout<<"\nEnter "<<i<<"st Student Name - ";
+        getline(cin,Name);
+        cout<<"Enter "<<i<<"st Student Phone Number - ";
+        getline(cin,Ph_no);
+        ob[i].getdata(Name,Ph_no);
+    }
+ cout<<"Enter Name to show Student Ph Number "<<endl;
+        getline(cin,Search);
+        ob->display(Search,ob);
+        return 0;
+}
