@@ -1,0 +1,87 @@
+/* Program 7 - Define a class MAT of size m*n, define +,- and * operation of MAT objects. 
+Write a CPP program to test bove class for above operations on the MAT objects. */
+
+#include<iostream>
+using namespace std;
+class MAT{
+    public:
+    int row,col;
+    int** mat;
+    void getData(){
+        cout<<"Enter Row and Column size of matrix respectively - ";
+        cin>>row>>col;
+        mat = new int* [row];
+        for(int i=0; i<row; ++i){
+        mat[i] = new int[col];
+        }
+     for(int i=0;i<row;i++){
+            for(int j=0;j<col;++j){
+                cout<<"Enter "<<j+1<<"th element of "<<i+1<<"th coloumn - ";
+                cin>>mat[i][j];
+            }
+        }
+    }
+    MAT operator+(MAT B);    // Addition Of two Matrix 
+    MAT operator-(MAT B);     // Difference of two matrix
+    MAT operator*(MAT B);     // Multiplication of two matrix
+};
+MAT MAT:: operator+(MAT B){
+        MAT sum;
+        sum.row=row;
+        sum.col=col;
+        sum.mat=new int *[row];
+        for(int i=0; i<row; i++){
+            sum.mat[i]=new int[col];
+        }
+        cout<<"Matrix Addition Is - "<<endl;;
+        for(int i=0; i<row; i++){
+            for(int j=0; j<col; j++) {
+                sum.mat[i][j]=mat[i][j]+B.mat[i][j];
+                cout<<sum.mat[i][j];
+            }
+            cout<<endl;
+        }
+}
+MAT MAT:: operator-(MAT B){
+    MAT diff;
+        diff.row=row;
+        diff.col=col;
+        diff.mat=new int *[row];
+        for(int i=0; i<row; i++){
+            diff.mat[i]=new int[col];
+        }
+         cout<<"Matrix Difference Is - "<<endl;;
+        for(int i=0; i<row; i++){
+            for(int j=0; j<col; j++) {
+                diff.mat[i][j]=mat[i][j]-B.mat[i][j];
+                cout<<diff.mat[i][j];
+            }
+            cout<<endl;
+        }
+}
+MAT MAT:: operator*(MAT B){
+    MAT mul;
+        mul.row=row;
+        mul.col=col;
+        mul.mat=new int *[row];
+        for(int i=0; i<row; i++){
+            mul.mat[i]=new int[col];
+        }
+        cout<<"Matrix Multiplication Is - "<<endl;
+        for(int i=0; i<row; i++){
+            for(int j=0; j<col; j++) {
+                mul.mat[i][j]=mat[i][j]*B.mat[i][j];
+                cout<<mul.mat[i][j];
+            }
+            cout<<endl;
+        }
+}
+int main(){
+    MAT A,B,C;
+    A.getData();
+    B.getData();
+    A+B; 
+    A-B;
+    A*B;
+    return 0;
+}
