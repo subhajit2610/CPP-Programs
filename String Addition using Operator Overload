@@ -1,0 +1,31 @@
+// Using overloading ‘+’ operator to concatenate two string objects.
+
+#include<iostream>
+#include<string>
+using namespace std;
+class demo{
+    public:
+    string s1,s3;
+    void getData(string x){
+        s1=x;
+    }
+    demo operator+(demo B){
+        demo temp;
+        temp.s3=s1+B.s1;
+        cout<<" Added String is - ";
+        cout<<temp.s3;
+        return temp;
+    }
+};
+int main(){
+    demo A,B,C;
+    string s1,s2;
+    cout<<" Enter String 1 Value - ";
+    getline(cin,s1);
+    A.getData(s1);
+    cout<<" Enter String 2 Value - ";
+    getline(cin,s2);
+    B.getData(s2);
+    C=A+B;
+    return 0;
+}
