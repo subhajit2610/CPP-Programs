@@ -5,12 +5,12 @@ class clock{
     int hr, min, sec;
     string name;
     public:
-    void getData(string x){
+    void getData(string& x){
         name=x;
         cout<< " \nEnter "<< name <<" Hour, Minute and Second respectively - "<<endl;
         cin>>hr>>min>>sec;
     }
-    clock operator+(clock B){
+    clock operator+(clock& B){
         clock temp;
         temp.hr=hr+B.hr;
         temp.min=min+B.min;
