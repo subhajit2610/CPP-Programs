@@ -21,9 +21,9 @@ class MAT{
             }
         }
     }
-    MAT operator+(MAT B);    // Addition Of two Matrix 
-    MAT operator-(MAT B);     // Difference of two matrix
-    MAT operator*(MAT B);     // Multiplication of two matrix
+    MAT operator+(MAT& B);    // Addition Of two Matrix 
+    MAT operator-(MAT& B);     // Difference of two matrix
+    MAT operator*(MAT& B);     // Multiplication of two matrix
 
     void free(){
         for(int i=0; i<row; i++){
@@ -32,7 +32,7 @@ class MAT{
         delete [] mat;
     }
 };
-MAT MAT:: operator+(MAT B){
+MAT MAT:: operator+(MAT& B){
         MAT sum;
         sum.row=row;
         sum.col=col;
@@ -49,7 +49,7 @@ MAT MAT:: operator+(MAT B){
             cout<<endl;
         }
 }
-MAT MAT:: operator-(MAT B){
+MAT MAT:: operator-(MAT& B){
     MAT diff;
         diff.row=row;
         diff.col=col;
@@ -66,7 +66,7 @@ MAT MAT:: operator-(MAT B){
             cout<<endl;
         }
 }
-MAT MAT:: operator*(MAT B){
+MAT MAT:: operator*(MAT& B){
     MAT mul;
         mul.row=row;
         mul.col=col;
