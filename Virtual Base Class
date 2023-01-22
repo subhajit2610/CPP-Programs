@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Person{
+    public:
+    string Name,Code;
+    void getdata() {
+        cout<<"Enter the Name:";
+        cin>>Name;
+        cout<<"Enter the Code:";
+        cin>>Code;
+    }
+};
+class Account : virtual public Person{
+    public:
+    int Pay;
+    void getpay() {
+        cout<<"Enter the Pay Amount:";
+        cin>>Pay;
+    }
+};
+class Admin : virtual public Person{
+    public:
+    string Experience;
+    void getexp(){
+        cout<<"Enter the Experience Detail:";
+        cin>>Experience;
+    }
+};
+class Master : public Account,public Admin{
+    public:
+    void show() {
+        cout<<"-------------------------------\nAll the Inserted Details are:"<<"\nName:"<<Name<<"\nCode:"<<Code<<"\nPay Amount:"<<Pay<<"\nExperience:"<<Experience;
+    }
+};
+int main(){
+    Master ob;
+    ob.getdata();
+    ob.getpay();
+    ob.getexp();
+    ob.show();
+    return 0;
+}
