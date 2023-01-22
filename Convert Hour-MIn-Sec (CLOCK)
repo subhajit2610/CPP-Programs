@@ -1,0 +1,37 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class clock{
+    int hr, min, sec;
+    string name;
+    public:
+    void getData(string x){
+        name=x;
+        cout<< " \nEnter "<< name <<" Hour, Minute and Second respectively - "<<endl;
+        cin>>hr>>min>>sec;
+    }
+    clock operator+(clock B){
+        clock temp;
+        temp.hr=hr+B.hr;
+        temp.min=min+B.min;
+        temp.sec=sec+B.sec;
+        if (temp.sec>60 || temp.min>60){
+            temp.min += temp.sec/60;
+            temp.sec %= 60;
+            temp.hr += temp.min/60;
+            temp.min %= 60;
+        }
+        return temp;
+    }
+    void display(){
+        cout<< "Added value of two times are - "<<hr<<" Hour "<<min<<" min " <<sec <<" sec "<<endl;
+    }
+};
+int main(){
+    clock A,B,C;
+    A.getData("First");
+    B.getData("Second");
+    C=A+B;
+    C.display();
+    return 0;
+}
