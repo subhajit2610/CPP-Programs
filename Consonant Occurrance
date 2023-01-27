@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Consonant{
+    public:
+    string line;
+    int vowels=0, consonants=0;
+    void getdata()   {
+        cout << "Enter a line of string: ";
+        getline(cin, line);
+    }
+    void check()  {
+        for(int i = 0; i < line.length(); ++i){
+         line[i] = tolower(line[i]);  
+            if(line[i]=='a' || line[i]=='e' || line[i]=='i' || line[i]=='o' || line[i]=='u') {
+                ++vowels;
+            }
+            else if(line[i]>='a'&& line[i]<='z'){
+                ++consonants;
+            }
+        }
+    }
+    void display(){
+        cout << "Consonants: " << consonants << endl;
+    }
+};
+int main(){
+    Consonant ob;
+    ob.getdata();
+    ob.check();
+    ob.display();
+    return 0;
+}
