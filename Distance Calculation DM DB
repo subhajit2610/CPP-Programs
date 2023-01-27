@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+class db;
+class dm
+{
+    public:
+    float m,cm,value;
+    void getdata()
+    {
+       cout<<"\nEnter meter value:";
+       cin>>m;
+       cout<<"\nEnter centimeter value:";
+       cin>>cm;
+    }
+    friend void sum(dm,db);
+};
+class db
+{
+public:
+    float ft,in,value;
+    void getdata()
+    {
+        cout<<"Enter feet value:";
+        cin>>ft;
+        cout<<"Enter inches value:";
+        cin>>in;
+    }
+    friend void sum(dm,db);
+};
+void sum(dm a,db b)
+{
+    float x,y,z;
+    char w;
+    x=(a.m+(a.cm/100));
+    y=(b.ft+(b.in/12));
+    cout<<"Select the unit in which to be answered(for meters & cms press 'y',for feets & inches press 'n' :";
+    cin>>w;
+    if(w=='y')
+    {
+        z=(x+(y*0.304));
+        a.value=z;
+        cout<<"The Result in Meter is:"<<a.value;
+    }
+    else
+    {
+        z=(y+(x*3.28));
+        b.value=z;
+        cout<<"The Result in Feets is:"<<b.value;
+    }
+}
+int main()
+{
+    dm ob1;
+    db ob2;
+    ob1.getdata();
+    ob2.getdata();
+    sum(ob1,ob2);
+    return 0;
+}
