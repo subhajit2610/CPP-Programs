@@ -1,0 +1,96 @@
+#include <iostream>
+using namespace std;
+class Student
+{
+public:
+    string s_name,s_rollno,s_stream,s_regno,s_phno;
+    int s_sn;
+    void getdata()
+    {
+        cout<<"\nEnter the Students Serial No.(Serial No. of first student should be 1,second student should be 2 and so on):";
+        cin>>s_sn;
+        cout<<"\nEnter the Student's Name:";
+        cin>>s_name;
+        cout<<"\nEnter the Student's Roll No.:";
+        cin>>s_rollno;
+        cout<<"\nEnter the Student's Stream:";
+        cin>>s_stream;
+        cout<<"\nEnter the Student's Registration No.:";
+        cin>>s_regno;
+        cout<<"\nEnter the Student's Phone No.:";
+        cin>>s_phno;
+    }
+    void display()
+    {
+        cout<<"\nSerial No:"<<s_sn<<"\nName:"<<s_name<<"\nRoll No:"<<s_rollno<<"\nStream:"<<s_stream<<"\nRegistration No.:"<<s_regno<<"\nPhone No.:"<<s_phno;
+    }
+};
+class BSC : public Student
+{};
+class BCA : public Student
+{};
+class BIT : public Student
+{};
+int main()
+{
+    int a,b,c,p,w,q;
+    char m,n;
+    cout<<"\nEnter the Number of BSC Students:";
+    cin>>a;
+    cout<<"\nEnter the Number of BCA Students:";
+    cin>>b;
+    cout<<"\nEnter the Number of BIT Students:";
+    cin>>c;
+    BSC st1[a];
+    BCA st2[b];
+    BIT st3[c];
+    for(w=0; w<a; w++)
+    {
+        cout<<"\nEnter the details of the "<<w+1<<"th BSC Student->";
+        st1[w].getdata();
+    }
+    for(w=0; w<b; w++)
+    {
+        cout<<"\nEnter the details of the "<<w+1<<"th BCA Student->";
+        st2[w].getdata();
+    }
+    for(w=0; w<c; w++)
+    {
+        cout<<"\nEnter the details of the "<<w+1<<"th BIT Student->";
+        st3[w].getdata();
+    }
+
+    cout<<"\nDo you want to search anything?(for Yes press 'y',for No press 'n'):";
+    cin>>m;
+    if(m=='y')
+    {
+        cout<<"\nMention Student's Stream(for BSC press 'i',for BCA press 'j',for BIT press 'k'):";
+        cin>>n;
+        if(n=='i')
+        {
+            cout<<"\nEnter the BSC Student's Serial No.:";
+            cin>>p;
+            q=p-1;
+            st1[q].display();
+        }
+        else if(n=='j')
+        {
+            cout<<"\nEnter the BCA Student's Serial No.:";
+            cin>>p;
+            q=p-1;
+            st2[q].display();
+        }
+        else if(n=='k')
+        {
+            cout<<"\nEnter the BIT Student's Serial No.:";
+            cin>>p;
+            q=p-1;
+            st3[q].display();
+        }
+        else
+        {
+            cout<<"\nInput is Invalid.";
+        }
+    }
+    return 0;
+}
