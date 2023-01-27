@@ -1,0 +1,58 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+class polar
+{
+    public:
+    float r,theta;
+    void getdata()
+    {
+    cout<<"Enter the Value of Radius:";
+    cin>>r;
+    cout<<"Enter the Value of Theta:";
+    cin>>theta;
+    }
+};
+class rectangular
+{
+    public:
+    float x,y;
+    void getdata()
+    {
+    cout<<"Enter the Value of X-axis:";
+    cin>>x;
+    cout<<"Enter the Value of Y-axis:";
+    cin>>y;
+    }
+};
+class Cal
+{
+public:
+    float i,j,k,l,m,n;
+    void calpolartorectangular(polar a)
+    {
+       i=a.r*cos(a.theta);
+       j=a.r*sin(a.theta);
+       cout<<"The Equivalent Rectangular Co-Ordinates corresponding to given Polar Co-Ordinates are,\nrX="<<i<<"\nY="<<j<<endl;
+    }
+    void calrectangulartopolar(rectangular b)
+    {
+       k=sqrt(b.x*b.x+b.y*b.y);
+       m=b.x;
+       n=b.y;
+       l=atan2(n,m);
+       cout<<"The Equivalent Polar Co-Ordinates corresponding to given Ractangular Co-Ordinates are,\Radius="<<k<<"\nTheta="<<l<<endl;
+    }
+
+};
+int main()
+{
+    polar ob1;
+    rectangular ob2;
+    ob1.getdata();
+    ob2.getdata();
+    Cal ob3;
+    ob3.calpolartorectangular(ob1);
+    ob3.calrectangulartopolar(ob2);
+    return 0;
+}
