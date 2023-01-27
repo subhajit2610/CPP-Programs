@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+template <class t>
+class Arrays
+{
+    public:
+    t *arr,temp;
+    int i,j,m,n;
+    Arrays()
+    {
+        cout<<"\nEnter the Array Elements Quantity:";
+        cin>>j;
+        arr=new t[j];
+        for(i=0;i<j;i++)
+        {
+            cout<<"Enter the "<<i+1<<"th element of the Array:";
+            cin>>arr[i];
+        }
+    }
+    void display()
+    {
+        cout<<"\nThe Array Elements are:";
+        for(i=0;i<j;i++)
+        {
+            cout<<arr[i]<<"  ";
+        }
+    }
+    void sorting()
+{
+    for(m=0;m<j-1;m++)
+    {
+        for(n=j-1;m<n;n--)
+        {
+            if(arr[n]<arr[n-1])
+            {
+                temp=arr[n];
+                arr[n]=arr[n-1];
+                arr[n-1]=temp;
+            }
+        }
+    }
+}
+};
+int main()
+{
+    Arrays <int> ob;
+    ob.display();
+    ob.sorting();
+    cout<<"\n------------------------------------------\nAfter sorting , the Array Elements are:\n";
+    ob.display();
+    Arrays <float> ob1;
+    ob1.display();
+    ob1.sorting();
+    cout<<"\n------------------------------------------\nAfter sorting , the Array Elements are:\n\n";
+    ob1.display();
+    return 0;
+}
