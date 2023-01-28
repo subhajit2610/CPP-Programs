@@ -3,7 +3,7 @@ using namespace std;
 class vector{
     public:
     int n;
-    float *vect = new(nothrow) float[n];
+    float *vect = new float[n];
     void create();
     void modify();
     void multiply();
@@ -12,25 +12,17 @@ class vector{
 void vector::create(){
     cout<<"\nEnter Size of Float Vector Series - "<<endl;
     cin>>n;
-    if (!vect)  
-        cout<< "Memory Allocation Falied \n";  
-    else {
         for(int i=0; i<n; i++){
         cout<<"Enter Position "<<i+1<<" value - ";
         cin>>vect[i];
     }
-    } 
 }
 void vector::modify(){
     cout<<"\nTo modify vector elements enter new size of Vector - ";
     cin>>n;
-    if (!vect)  
-        cout<< "Memory Allocation Falied \n";  
-    else {
     for(int i=0; i<n; i++){
         cout<<"Enter Position "<<i+1<<" value - ";
         cin>>vect[i];
-    }
     }
 }
 void vector::multiply(){
@@ -38,14 +30,16 @@ void vector::multiply(){
     cout<<"\nEnter A Scalar Value To Multiply With Vector - ";
     cin>>num;
     for(int i=0; i<n; i++){
-        cout<<"Multiplied value of "<<i+1<<" is >> "<<vect[i]*float(num)<<endl;
+        vect[i]*=float(num);
+        cout<<"Multiplied value of "<<i+1<<" is >> "<<vect[i]<<endl;
     }
 }
 void vector::display(){
-    cout<<"\nLast Updated Vector Values - \n------------------------------- "<<endl;
+    cout<<"\nLast Updated Vector Value - ( " ;
     for(int i=0; i<n; i++){
-        cout<<"Position "<<i+1<<" Value is "<<vect[i]<<endl;
+        cout<<vect[i]<<" ";
     }
+    cout<<")";
     delete []vect;
 }
 int main(){
