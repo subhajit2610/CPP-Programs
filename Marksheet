@@ -4,10 +4,8 @@ using namespace std;
 class marksheet{
     string name, reg_no;
     long int total_marks, roll_no, Class;
-    int cpp,os,netw,java,AI;
     public:
 void getdetails();
-int calculate();
 void display();
 };
 void marksheet::getdetails(){
@@ -17,29 +15,16 @@ void marksheet::getdetails(){
     getline(cin,reg_no);  
     cout<<"Enter Student Class - ";
     cin>>Class;  
-    cout<<" Enter Marks of all subjects respectively "<<endl;
-    cout<<" Enter Marks obtained in C++ out of 100 - ";
-    cin>>cpp;
-    cout<<" Enter Marks obtained in OS out of 100 - ";
-    cin>>os;
-    cout<<" Enter Marks obtained in Networking out of 100 - ";
-    cin>>netw;
-    cout<<" Enter Marks obtained in Java  out of 100 - ";
-    cin>>java;
-    cout<<" Enter Marks obtained in AI out of 100 - ";
-    cin>>AI;
-}
-int marksheet::calculate(){
-      return total_marks=cpp+os+netw+java+AI;
+    cout<<" Enter Student Total Marks "<<endl;
+    cin>>total_marks;
 }
 void marksheet::display(){
     cout<< "\nStudent Name - "<<name<<endl;
     cout<< "Roll Number - "<<roll_no<<endl;
     cout<< "Registration Number - "<<reg_no<<endl;
     cout<< "Student Class - "<<Class<<endl;
-    cout<< "Total Marks Obtained By Student Out Of 500 - "<<total_marks<<endl;
+    cout<< "Total Marks Obtained By Student - "<<total_marks<<endl;
 }
-
 int main(){
     marksheet A[2];
     int i;
@@ -47,7 +32,6 @@ int main(){
         A[i].getdetails();
     }
     for(i=0;i<2;i++){
-        A[i].calculate();
         A[i].display();
     }
     return 0;
