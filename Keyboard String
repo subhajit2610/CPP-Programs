@@ -1,0 +1,43 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class keyboard{
+    public:
+    string str;
+    int ch=0, word=0, newline=0;
+    void getData(){
+        cout<<"\nEnter A Multiple line String & After Writing Please Press ~ sign into next line and press Enter >>>\n______________________________________________________________________________________________________\n"<<endl;
+        getline(cin,str,'~');
+    }
+    void cal(){
+        for (int i=0; str[i]!='\0'; ++i){
+            if((str[i]==' ')||(str[i]==str.back())){
+                word++;
+            }
+            else{
+                ++ch;
+            }
+            if(str[i]=='\n'){
+                ++newline;
+            }
+        }
+        cout.width(6);
+        cout<<left<<"Total Number Of New Line is - ";
+        cout.width(6);  
+        cout<<right<<newline<<endl;
+        cout.width(6);  
+        cout<<left<<"Total Number Of Word is - ";
+        cout.width(9);
+        cout<<right<<word<<endl;
+        cout.width(6);
+        cout<<left<<"Total Number Of Character is ";
+        cout.width(6);
+        cout<<right<<ch<<endl;
+    }
+};
+int main(){
+    keyboard A;
+    A.getData();
+    A.cal();
+    return 0;
+}
